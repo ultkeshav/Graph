@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    // Function to calculate the sum of dependencies.
+    int sumOfDependencies(int V, vector<vector<int>> &edges) {
+        vector<vector<int>> adj(V);  // adjacency list
+
+        // Build the adjacency list from edges
+        for (auto& edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+            adj[u].push_back(v);
+        }
+
+        // Count total dependencies (outgoing edges)
+        int sum = 0;
+        for (const auto& adjNodes : adj) {
+            sum += adjNodes.size();
+        }
+
+        return sum;
+    }
+};
